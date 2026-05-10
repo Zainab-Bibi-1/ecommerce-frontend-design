@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brand - My Cart</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body class="cart-page">
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-top">
+    <div class="container">
+      <div class="header-top-inner">
+        <a href="index.html" class="logo">
+          <img src="assets/Images/logo.png" alt="Brand" class="logo-img" />
+          <span class="logo-text">Brand</span>
+        </a>
+        <div class="search-bar">
+          <input type="text" placeholder="Search" class="search-input" id="searchInput" />
+          <select class="search-category">
+            <option>All category</option>
+            <option>Electronics</option>
+            <option>Clothing</option>
+          </select>
+          <button class="search-btn" onclick="handleSearch()">Search</button>
+        </div>
+        <div class="header-actions">
+          <a href="#" class="header-action"><i class="far fa-user"></i><span>Profile</span></a>
+          <a href="#" class="header-action"><i class="far fa-comment-dots"></i><span>Message</span></a>
+          <a href="#" class="header-action"><i class="far fa-heart"></i><span>Orders</span></a>
+          <a href="cart.html" class="header-action"><i class="fas fa-shopping-cart"></i><span>My cart</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <nav class="header-nav">
+    <div class="container">
+      <div class="nav-inner">
+        <button class="all-category-btn"><i class="fas fa-bars"></i> All category</button>
+        <ul class="nav-links">
+          <li><a href="listing.html">Hot offers</a></li>
+          <li><a href="listing.html">Gift boxes</a></li>
+          <li><a href="listing.html">Projects</a></li>
+          <li><a href="listing.html">Menu item</a></li>
+          <li><a href="#">Help <i class="fas fa-chevron-down"></i></a></li>
+        </ul>
+        <div class="nav-right">
+          <span class="lang-select">English, USD <i class="fas fa-chevron-down"></i></span>
+          <span class="ship-to">Ship to <img src="https://flagcdn.com/w20/de.png" alt="DE" /> <i class="fas fa-chevron-down"></i></span>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<div class="container">
+  <h2 class="cart-title" id="cartTitle" style="margin-top:20px;">My cart (0)</h2>
+
+  <div class="cart-layout">
+    <!-- LEFT: dynamic cart items + saved for later -->
+    <div>
+      <div class="cart-items" id="cartItemsContainer">
+        <!-- Populated by JS from localStorage -->
+      </div>
+
+      <div class="cart-footer">
+        <a href="index.html" class="btn-back-shop"><i class="fas fa-arrow-left"></i> Back to shop</a>
+        <button class="btn-remove-all">Remove all</button>
+      </div>
+
+      <!-- Trust badges -->
+      <div class="trust-badges">
+        <div class="trust-badge">
+          <i class="fas fa-lock"></i>
+          <div class="trust-badge-text"><p>Secure payment</p><p>Have you ever finally just</p></div>
+        </div>
+        <div class="trust-badge">
+          <i class="fas fa-comment-dots"></i>
+          <div class="trust-badge-text"><p>Customer support</p><p>Have you ever finally just</p></div>
+        </div>
+        <div class="trust-badge">
+          <i class="fas fa-truck"></i>
+          <div class="trust-badge-text"><p>Free delivery</p><p>Have you ever finally just</p></div>
+        </div>
+      </div>
+
+      <!-- SAVED FOR LATER — dynamic, hidden when empty -->
+      <div class="saved-section" id="savedSection" style="display:none;">
+        <h3>Saved for later</h3>
+        <div class="saved-grid" id="savedGridContainer">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+      <!-- Discount banner -->
+      <div class="discount-banner" style="margin-top:14px;">
+        <div><h3>Super discount on more than 100 USD</h3><p>Have you ever finally just write dummy info</p></div>
+        <button class="btn-shop-now" onclick="window.location.href='listing.html'">Shop now</button>
+      </div>
+    </div>
+
+    <!-- RIGHT: order summary -->
+    <div class="cart-summary-box">
+      <p style="font-size:13px;color:#8b96a5;margin-bottom:8px;">Have a coupon?</p>
+      <div class="coupon-row">
+        <input type="text" placeholder="Add coupon" class="coupon-input" />
+        <button class="btn-apply-coupon">Apply</button>
+      </div>
+      <div class="summary-rows">
+        <div class="summary-row"><span>Subtotal:</span><span id="summarySubtotal">$0.00</span></div>
+        <div class="summary-row summary-discount"><span>Discount:</span><span>- $60.00</span></div>
+        <div class="summary-row summary-tax"><span>Tax:</span><span>+ $14.00</span></div>
+      </div>
+      <div class="summary-total"><span>Total:</span><span id="summaryTotal">$0.00</span></div>
+      <button class="btn-checkout">Checkout</button>
+      <div class="payment-icons" style="gap:8px;flex-wrap:wrap;">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Mastercard-logo.png" alt="MC" style="height:22px;width:auto;" />
+        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PP" style="height:22px;width:auto;" />
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png" alt="Visa" style="height:22px;width:auto;" />
+        <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Apple" style="height:22px;width:auto;" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="site-footer" style="margin-top:20px;">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo"><img src="assets/Images/logo.png" alt="Brand" class="logo-img" /><span class="logo-text">Brand</span></a>
+        <p>Best information about the company goes here but now lorem ipsum is</p>
+        <div class="social-links"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-linkedin-in"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-youtube"></i></a></div>
+      </div>
+      <div class="footer-col"><h4>About</h4><ul><li><a href="#">About Us</a></li><li><a href="#">Find store</a></li><li><a href="#">Categories</a></li><li><a href="#">Blogs</a></li></ul></div>
+      <div class="footer-col"><h4>Partnership</h4><ul><li><a href="#">About Us</a></li><li><a href="#">Find store</a></li><li><a href="#">Categories</a></li><li><a href="#">Blogs</a></li></ul></div>
+      <div class="footer-col"><h4>Information</h4><ul><li><a href="#">Help Center</a></li><li><a href="#">Money Refund</a></li><li><a href="#">Shipping</a></li><li><a href="#">Contact us</a></li></ul></div>
+      <div class="footer-col"><h4>For users</h4><ul><li><a href="#">Login</a></li><li><a href="#">Register</a></li><li><a href="#">Settings</a></li><li><a href="#">My Orders</a></li></ul></div>
+      <div class="footer-col"><h4>Get app</h4><div class="app-btns"><a href="#" class="app-btn"><i class="fab fa-apple"></i> App Store</a><a href="#" class="app-btn"><i class="fab fa-google-play"></i> Google Play</a></div></div>
+    </div>
+    <div class="footer-bottom"><p>© 2023 Ecommerce.</p><div class="footer-lang"><img src="https://flagcdn.com/w20/us.png" alt="US" /> English <i class="fas fa-chevron-up"></i></div></div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
